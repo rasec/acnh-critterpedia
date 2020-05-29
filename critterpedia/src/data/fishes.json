@@ -1,322 +1,402 @@
 [
   {
     "id": 1,
-    "location": 1
+    "location": 1,
+    "name": "bitterling"
   },
   {
     "id": 2,
-    "location": 1
+    "location": 1,
+    "name": "pale chub"
   },
   {
     "id": 3,
-    "location": 1
+    "location": 1,
+    "name": "crucian carp"
   },
   {
     "id": 4,
-    "location": 1
+    "location": 1,
+    "name": "dace"
   },
   {
     "id": 5,
-    "location": 2
+    "location": 2,
+    "name": "carp"
   },
   {
     "id": 6,
-    "location": 2
+    "location": 2,
+    "name": "koi"
   },
   {
     "id": 7,
-    "location": 2
+    "location": 2,
+    "name": "Goldfish"
   },
   {
     "id": 8,
-    "location": 2
+    "location": 2,
+    "name": "Pop-eyed goldfish"
   },
   {
     "id": 9,
-    "location": 2
+    "location": 2,
+    "name": "Ranchu goldfish"
   },
   {
     "id": 10,
-    "location": 2
+    "location": 2,
+    "name": "Killifish"
   },
   {
     "id": 11,
-    "location": 2
+    "location": 2,
+    "name": "Crawfish"
   },
   {
     "id": 12,
-    "location": 1
+    "location": 1,
+    "name": "Soft-shelled turtle"
   },
   {
     "id": 13,
-    "location": 1
+    "location": 1,
+    "name": "Snapping turtle"
   },
   {
     "id": 14,
-    "location": 2
+    "location": 2,
+    "name": "Tadpole"
   },
   {
     "id": 15,
-    "location": 2
+    "location": 2,
+    "name": "Frog"
   },
   {
     "id": 16,
-    "location": 1
+    "location": 1,
+    "name": "Freshwater goby"
   },
   {
     "id": 17,
-    "location": 1
+    "location": 1,
+    "name": "Loach"
   },
   {
     "id": 18,
-    "location": 2
+    "location": 2,
+    "name": "Catfish"
   },
   {
     "id": 19,
-    "location": 2
+    "location": 2,
+    "name": "Giant snakehead"
   },
   {
     "id": 20,
-    "location": 1
+    "location": 1,
+    "name": "Bluegill"
   },
   {
     "id": 21,
-    "location": 1
+    "location": 1,
+    "name": "Yellow perch"
   },
   {
     "id": 22,
-    "location": 1
+    "location": 1,
+    "name": "Black bass"
   },
   {
     "id": 23,
-    "location": 1
+    "location": 1,
+    "name": "Tilapia"
   },
   {
     "id": 24,
-    "location": 1
+    "location": 1,
+    "name": "Pike"
   },
   {
     "id": 25,
-    "location": 1
+    "location": 1,
+    "name": "Pond smelt"
   },
   {
     "id": 26,
-    "location": 1
+    "location": 1,
+    "name": "Sweetfish"
   },
   {
     "id": 27,
-    "location": 3
+    "location": 3,
+    "name": "Cherry salmon"
   },
   {
     "id": 28,
-    "location": 3
+    "location": 3,
+    "name": "Char"
   },
   {
     "id": 29,
-    "location": 3
+    "location": 3,
+    "name": "Golden trout"
   },
   {
     "id": 30,
-    "location": 3
+    "location": 3,
+    "name": "String fish"
   },
   {
     "id": 31,
-    "location": 4
+    "location": 4,
+    "name": "Salmon"
   },
   {
     "id": 32,
-    "location": 4
+    "location": 4,
+    "name": "King salmon"
   },
   {
     "id": 33,
-    "location": 1
+    "location": 1,
+    "name": "Mitten crab"
   },
   {
     "id": 34,
-    "location": 1
+    "location": 1,
+    "name": "Guppy"
   },
   {
     "id": 35,
-    "location": 1
+    "location": 1,
+    "name": "Nibble fish"
   },
   {
     "id": 36,
-    "location": 1
+    "location": 1,
+    "name": "Angelfish"
   },
   {
     "id": 37,
-    "location": 1
+    "location": 1,
+    "name": "Betta"
   },
   {
     "id": 38,
-    "location": 1
+    "location": 1,
+    "name": "Neon tetra"
   },
   {
     "id": 39,
-    "location": 1
+    "location": 1,
+    "name": "Rainbowfish"
   },
   {
     "id": 40,
-    "location": 1
+    "location": 1,
+    "name": "Piranha"
   },
   {
     "id": 41,
-    "location": 1
+    "location": 1,
+    "name": "Arowana"
   },
   {
     "id": 42,
-    "location": 1
+    "location": 1,
+    "name": "Dorado"
   },
   {
     "id": 43,
-    "location": 2
+    "location": 2,
+    "name": "Gar"
   },
   {
     "id": 44,
-    "location": 1
+    "location": 1,
+    "name": "Arapaima"
   },
   {
     "id": 45,
-    "location": 1
+    "location": 1,
+    "name": "Saddled bichir"
   },
   {
     "id": 46,
-    "location": 4
+    "location": 4,
+    "name": "Sturgeon"
   },
   {
     "id": 47,
-    "location": 5
+    "location": 5,
+    "name": "Sea butterfly"
   },
   {
     "id": 48,
-    "location": 5
+    "location": 5,
+    "name": "Sea horse"
   },
   {
     "id": 49,
-    "location": 5
+    "location": 5,
+    "name": "Clown fish"
   },
   {
     "id": 50,
-    "location": 5
+    "location": 5,
+    "name": "Surgeonfish"
   },
   {
     "id": 51,
-    "location": 5
+    "location": 5,
+    "name": "Butterfly Fish"
   },
   {
     "id": 52,
-    "location": 5
+    "location": 5,
+    "name": "Napoleonfish"
   },
   {
     "id": 53,
-    "location": 5
+    "location": 5,
+    "name": "Zebra turkeyfish"
   },
   {
     "id": 54,
-    "location": 5
+    "location": 5,
+    "name": "Blowfish"
   },
   {
     "id": 55,
-    "location": 5
+    "location": 5,
+    "name": "Puffer fish"
   },
   {
     "id": 56,
-    "location": 5
+    "location": 5,
+    "name": "Anchovy"
   },
   {
     "id": 57,
-    "location": 5
+    "location": 5,
+    "name": "Horse mackerel"
   },
   {
     "id": 58,
-    "location": 5
+    "location": 5,
+    "name": "Barred knifejaw"
   },
   {
     "id": 59,
-    "location": 5
+    "location": 5,
+    "name": "Sea bass"
   },
   {
     "id": 60,
-    "location": 5
+    "location": 5,
+    "name": "Red Snapper"
   },
   {
     "id": 61,
-    "location": 5
+    "location": 5,
+    "name": "Dab"
   },
   {
     "id": 62,
-    "location": 5
+    "location": 5,
+    "name": "Olive flounder"
   },
   {
     "id": 63,
-    "location": 5
+    "location": 5,
+    "name": "Squid"
   },
   {
     "id": 64,
-    "location": 5
+    "location": 5,
+    "name": "Moray eel"
   },
   {
     "id": 65,
-    "location": 6
+    "location": 5,
+    "name": "Ribbon eel"
   },
   {
     "id": 66,
-    "location": 6
+    "location": 6,
+    "name": "Tuna"
   },
   {
     "id": 67,
-    "location": 6
+    "location": 6,
+    "name": "Blue marlin"
   },
   {
     "id": 68,
-    "location": 6
+    "location": 6,
+    "name": "Giant trevally"
   },
   {
     "id": 69,
-    "location": 5
+    "location": 6,
+    "name": "Mahi-mahi"
   },
   {
     "id": 70,
-    "location": 5
+    "location": 5,
+    "name": "Ocean sunfish"
   },
   {
     "id": 71,
-    "location": 5
+    "location": 5,
+    "name": "Ray"
   },
   {
     "id": 72,
-    "location": 5
+    "location": 5,
+    "name": "Saw Shark"
   },
   {
     "id": 73,
-    "location": 5
+    "location": 5,
+    "name": "Hammerhead shark"
   },
   {
     "id": 74,
-    "location": 5
+    "location": 5,
+    "name": "Great white shark"
   },
   {
     "id": 75,
-    "location": 5
+    "location": 5,
+    "name": "Whale shark"
   },
   {
     "id": 76,
-    "location": 5
+    "location": 5,
+    "name": "Suckerfish"
   },
   {
     "id": 77,
-    "location": 5
+    "location": 5,
+    "name": "Football fish"
   },
   {
     "id": 78,
-    "location": 5
+    "location": 5,
+    "name": "Oarfish"
   },
   {
     "id": 79,
-    "location": 5
+    "location": 5,
+    "name": "Barreleye"
   },
   {
     "id": 80,
-    "location": 5
+    "location": 5,
+    "name": "Coelacanth"
   }
 ]
