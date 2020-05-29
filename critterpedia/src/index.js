@@ -4,7 +4,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import './index.scss';
 import fishesData from './data/fishes.json';
-import places from './data/places.json';
+import locations from './data/locations.json';
 
 class CritterPediaTable extends React.Component {
   constructor(props) {
@@ -15,13 +15,13 @@ class CritterPediaTable extends React.Component {
     };
   }
   selectItem(id) {
-    const fishes = fishesData.filter(fish => (fish.place === id));
+    const fishes = fishesData.filter(fish => (fish.location === id));
     this.setState({
       fishes
     });
   }
-  renderCell(critter, place) {
-    return <CritterPediaCell key={critter.id} critter={critter} place={place} />
+  renderCell(critter, location) {
+    return <CritterPediaCell key={critter.id} critter={critter} location={location} />
   }
   render() {
     return (
@@ -30,8 +30,8 @@ class CritterPediaTable extends React.Component {
         <div className="critterpedia-grid">
           {(() => {
             return this.state.fishes.map((fish) => {
-              const fishPlace = places.find(place => (fish.place === place.id));
-              return this.renderCell(fish, fishPlace);
+              const fishLocation = locations.find(location => (fish.location === location.id));
+              return this.renderCell(fish, fishLocation);
             });
           })()
           }
@@ -43,7 +43,7 @@ class CritterPediaTable extends React.Component {
 
 class CritterPediaCell extends React.Component {
   render() {
-    return (<div className="critterpedia-cell" id={this.props.critter.id}><img src={require(`./data/images/fish${this.props.critter.id}.png`)} />{this.props.place.name}</div>);
+    return (<div className="critterpedia-cell" id={this.props.critter.id}><img src={require(`./data/images/fish${this.props.critter.id}.png`)} />{this.props.location.name}</div>);
   }
 }
 
@@ -57,7 +57,7 @@ class PlaceSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedItem: 'Select a place',
+      selectedItem: 'Select a location',
     };
   }
   selectItem(id, name) {
@@ -76,7 +76,7 @@ class PlaceSelector extends React.Component {
     return (
       <DropdownButton variant="info" title={this.state.selectedItem}>
         {(() => {
-          return places.map(({ id, name }) => {
+          return locations.map(({ id, name }) => {
             return this.renderSelectorItem(id, name);
           });
         })()
