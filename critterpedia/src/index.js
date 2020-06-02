@@ -4,13 +4,28 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import './index.scss';
 import fishesData from './data/fishes.json';
+import shadows from './data/shadows.json';
 import locations from './data/locations.json';
+
+const sortTypes = [
+  {
+    name: 'id',
+    keyToSort: 'id',
+    sortFn: (a, b, keyToSort) => (a[keyToSort] - b[keyToSort])
+  },
+  {
+    name: 'Price',
+    keyToSort: 'price',
+    sortFn: (a, b, keyToSort) => (b[keyToSort] - a[keyToSort])
+  }
+];
 
 class CritterPedia extends React.Component {
   constructor(props) {
     super(props);
     this.selectItem = this.selectItem.bind(this);
     this.searchChange = this.searchChange.bind(this);
+    this.sortBy = this.sortBy.bind(this);
     this.state = {
       fishes: fishesData,
     };
@@ -27,13 +42,19 @@ class CritterPedia extends React.Component {
       fishes: filterdFishes
     });
   }
+  sortBy(sortFn, keyToSort) {
+    const sortedFishes = fishesData.sort((a, b) => sortFn(a, b, keyToSort));
+    this.setState({
+      fishes: sortedFishes
+    });
+  }
   renderCell(critter, location) {
     return <CritterPediaCell key={critter.id} critter={critter} location={location} />
   }
   render() {
     return (
       <div className="critterpedia">
-        <CritterPediaHeader selectLocationHandler={this.selectItem} handleSearchChange={this.searchChange} />
+        <CritterPediaHeader selectLocationHandler={this.selectItem} handleSearchChange={this.searchChange} sortByHandler={this.sortBy} />
         <div className="critterpedia-grid">
           {(() => {
             return this.state.fishes.map((fish) => {
@@ -53,6 +74,7 @@ class CritterPediaHeader extends React.Component {
     return (
       <div class="critterpedia-header">
         <PlaceSelector selectItemHandler={this.props.selectLocationHandler} />
+        <SortSelector sortBy={this.props.sortByHandler} />
         <CritterPediaInput handleSearchChange={this.props.handleSearchChange} />
       </div>
     )
@@ -61,7 +83,11 @@ class CritterPediaHeader extends React.Component {
 
 class CritterPediaCell extends React.Component {
   render() {
-    return (<div className="critterpedia-cell" id={this.props.critter.id}><img src={require(`./data/images/fish${this.props.critter.id}.png`)} />{this.props.critter.id}. {this.props.critter.name}</div>);
+    return (<div className="critterpedia-cell" id={this.props.critter.id}>
+      <img src={require(`./data/images/fish${this.props.critter.id}.png`)} />
+      {this.props.critter.id}. {this.props.critter.name}<br />
+      {this.props.critter.price}<br />
+      {shadows[this.props.critter.shadowType - 1].name}</div>);
   }
 }
 
@@ -97,6 +123,40 @@ class PlaceSelector extends React.Component {
         {(() => {
           return locations.map(({ id, name }) => {
             return this.renderSelectorItem(id, name);
+          });
+        })()
+        }
+      </DropdownButton>
+    );
+  }
+}
+
+class SortSelector extends React.Component {
+  constructor(props) {
+    super(props);
+    this.sortBy = this.sortBy.bind(this);
+    this.state = {
+      sortType: 'Select a way of sorting...',
+    };
+  }
+  sortBy({ name, sortFn, keyToSort }) {
+    this.setState({
+      sortType: name
+    });
+    this.props.sortBy(sortFn, keyToSort)
+  }
+  renderSortItem({ id, name, sortFn, keyToSort }) {
+    return (
+      <Dropdown.Item key={id} id={id} onSelect={() => { this.sortBy({ name, sortFn, keyToSort }) }}>{name}</Dropdown.Item>
+    );
+  }
+  render() {
+
+    return (
+      <DropdownButton variant="info" title={this.state.sortType}>
+        {(() => {
+          return sortTypes.map(({ id, name, keyToSort, sortFn }) => {
+            return this.renderSortItem({ id, name, sortFn, keyToSort });
           });
         })()
         }

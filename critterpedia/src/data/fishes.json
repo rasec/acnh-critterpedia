@@ -2,401 +2,561 @@
   {
     "id": 1,
     "location": 1,
-    "name": "bitterling"
+    "name": "bitterling",
+    "shadowType": 2,
+    "price": 900
   },
   {
     "id": 2,
     "location": 1,
-    "name": "pale chub"
+    "name": "pale chub",
+    "shadowType": 1,
+    "price": 200
   },
   {
     "id": 3,
     "location": 1,
-    "name": "crucian carp"
+    "name": "crucian carp",
+    "shadowType": 2,
+    "price": 160
   },
   {
     "id": 4,
     "location": 1,
-    "name": "dace"
+    "name": "dace",
+    "shadowType": 3,
+    "price": 240
   },
   {
     "id": 5,
     "location": 2,
-    "name": "carp"
+    "name": "carp",
+    "shadowType": 4,
+    "price": 300
   },
   {
     "id": 6,
     "location": 2,
-    "name": "koi"
+    "name": "koi",
+    "shadowType": 4,
+    "price": 4000
   },
   {
     "id": 7,
     "location": 2,
-    "name": "Goldfish"
+    "name": "Goldfish",
+    "shadowType": 1,
+    "price": 1300
   },
   {
     "id": 8,
     "location": 2,
-    "name": "Pop-eyed goldfish"
+    "name": "Pop-eyed goldfish",
+    "shadowType": 1,
+    "price": 1300
   },
   {
     "id": 9,
     "location": 2,
-    "name": "Ranchu goldfish"
+    "name": "Ranchu goldfish",
+    "shadowType": 2,
+    "price": 4500
   },
   {
     "id": 10,
     "location": 2,
-    "name": "Killifish"
+    "name": "Killifish",
+    "shadowType": 1,
+    "price": 300
   },
   {
     "id": 11,
     "location": 2,
-    "name": "Crawfish"
+    "name": "Crawfish",
+    "shadowType": 2,
+    "price": 200
   },
   {
     "id": 12,
     "location": 1,
-    "name": "Soft-shelled turtle"
+    "name": "Soft-shelled turtle",
+    "shadowType": 4,
+    "price": 3750
   },
   {
     "id": 13,
     "location": 1,
-    "name": "Snapping turtle"
+    "name": "Snapping turtle",
+    "shadowType": 4,
+    "price": 5000
   },
   {
     "id": 14,
     "location": 2,
-    "name": "Tadpole"
+    "name": "Tadpole",
+    "shadowType": 1,
+    "price": 100
   },
   {
     "id": 15,
     "location": 2,
-    "name": "Frog"
+    "name": "Frog",
+    "shadowType": 2,
+    "price": 120
   },
   {
     "id": 16,
     "location": 1,
-    "name": "Freshwater goby"
+    "name": "Freshwater goby",
+    "shadowType": 2,
+    "price": 400
   },
   {
     "id": 17,
     "location": 1,
-    "name": "Loach"
+    "name": "Loach",
+    "shadowType": 2,
+    "price": 400
   },
   {
     "id": 18,
     "location": 2,
-    "name": "Catfish"
+    "name": "Catfish",
+    "shadowType": 4,
+    "price": 800
   },
   {
     "id": 19,
     "location": 2,
-    "name": "Giant snakehead"
+    "name": "Giant snakehead",
+    "shadowType": 4,
+    "price": 5500
   },
   {
     "id": 20,
     "location": 1,
-    "name": "Bluegill"
+    "name": "Bluegill",
+    "shadowType": 2,
+    "price": 180
   },
   {
     "id": 21,
     "location": 1,
-    "name": "Yellow perch"
+    "name": "Yellow perch",
+    "shadowType": 3,
+    "price": 300
   },
   {
     "id": 22,
     "location": 1,
-    "name": "Black bass"
+    "name": "Black bass",
+    "shadowType": 4,
+    "price": 400
   },
   {
     "id": 23,
     "location": 1,
-    "name": "Tilapia"
+    "name": "Tilapia",
+    "shadowType": 3,
+    "price": 800
   },
   {
     "id": 24,
     "location": 1,
-    "name": "Pike"
+    "name": "Pike",
+    "shadowType": 4,
+    "price": 1800
   },
   {
     "id": 25,
     "location": 1,
-    "name": "Pond smelt"
+    "name": "Pond smelt",
+    "shadowType": 1,
+    "price": 400
   },
   {
     "id": 26,
     "location": 1,
-    "name": "Sweetfish"
+    "name": "Sweetfish",
+    "shadowType": 3,
+    "price": 900
   },
   {
     "id": 27,
     "location": 3,
-    "name": "Cherry salmon"
+    "name": "Cherry salmon",
+    "shadowType": 3,
+    "price": 1000
   },
   {
     "id": 28,
     "location": 3,
-    "name": "Char"
+    "name": "Char",
+    "shadowType": 3,
+    "price": 3800
   },
   {
     "id": 29,
     "location": 3,
-    "name": "Golden trout"
+    "name": "Golden trout",
+    "shadowType": 3,
+    "price": 15000
   },
   {
     "id": 30,
     "location": 3,
-    "name": "String fish"
+    "name": "String fish",
+    "shadowType": 5,
+    "price": 15000
   },
   {
     "id": 31,
     "location": 4,
-    "name": "Salmon"
+    "name": "Salmon",
+    "shadowType": 4,
+    "price": 700
   },
   {
     "id": 32,
     "location": 4,
-    "name": "King salmon"
+    "name": "King salmon",
+    "shadowType": 4,
+    "price": 1800
   },
   {
     "id": 33,
     "location": 1,
-    "name": "Mitten crab"
+    "name": "Mitten crab",
+    "shadowType": 2,
+    "price": 2000
   },
   {
     "id": 34,
     "location": 1,
-    "name": "Guppy"
+    "name": "Guppy",
+    "shadowType": 1,
+    "price": 1300
   },
   {
     "id": 35,
     "location": 1,
-    "name": "Nibble fish"
+    "name": "Nibble fish",
+    "shadowType": 1,
+    "price": 1500
   },
   {
     "id": 36,
     "location": 1,
-    "name": "Angelfish"
+    "name": "Angelfish",
+    "shadowType": 2,
+    "price": 3000
   },
   {
     "id": 37,
     "location": 1,
-    "name": "Betta"
+    "name": "Betta",
+    "shadowType": 1,
+    "price": 2500
   },
   {
     "id": 38,
     "location": 1,
-    "name": "Neon tetra"
+    "name": "Neon tetra",
+    "shadowType": 1,
+    "price": 500
   },
   {
     "id": 39,
     "location": 1,
-    "name": "Rainbowfish"
+    "name": "Rainbowfish",
+    "shadowType": 1,
+    "price": 800
   },
   {
     "id": 40,
     "location": 1,
-    "name": "Piranha"
+    "name": "Piranha",
+    "shadowType": 2,
+    "price": 2500
   },
   {
     "id": 41,
     "location": 1,
-    "name": "Arowana"
+    "name": "Arowana",
+    "shadowType": 4,
+    "price": 10000
   },
   {
     "id": 42,
     "location": 1,
-    "name": "Dorado"
+    "name": "Dorado",
+    "shadowType": 4,
+    "price": 15000
   },
   {
     "id": 43,
     "location": 2,
-    "name": "Gar"
+    "name": "Gar",
+    "shadowType": 5,
+    "price": 6000
   },
   {
     "id": 44,
     "location": 1,
-    "name": "Arapaima"
+    "name": "Arapaima",
+    "shadowType": 5,
+    "price": 10000
   },
   {
     "id": 45,
     "location": 1,
-    "name": "Saddled bichir"
+    "name": "Saddled bichir",
+    "shadowType": 4,
+    "price": 4000
   },
   {
     "id": 46,
     "location": 4,
-    "name": "Sturgeon"
+    "name": "Sturgeon",
+    "shadowType": 5,
+    "price": 10000
   },
   {
     "id": 47,
     "location": 5,
-    "name": "Sea butterfly"
+    "name": "Sea butterfly",
+    "shadowType": 1,
+    "price": 1000
   },
   {
     "id": 48,
     "location": 5,
-    "name": "Sea horse"
+    "name": "Sea horse",
+    "shadowType": 1,
+    "price": 1100
   },
   {
     "id": 49,
     "location": 5,
-    "name": "Clown fish"
+    "name": "Clown fish",
+    "shadowType": 1,
+    "price": 650
   },
   {
     "id": 50,
     "location": 5,
-    "name": "Surgeonfish"
+    "name": "Surgeonfish",
+    "shadowType": 2,
+    "price": 1000
   },
   {
     "id": 51,
     "location": 5,
-    "name": "Butterfly Fish"
+    "name": "Butterfly Fish",
+    "shadowType": 2,
+    "price": 1000
   },
   {
     "id": 52,
     "location": 5,
-    "name": "Napoleonfish"
+    "name": "Napoleonfish",
+    "shadowType": 5,
+    "price": 10000
   },
   {
     "id": 53,
     "location": 5,
-    "name": "Zebra turkeyfish"
+    "name": "Zebra turkeyfish",
+    "shadowType": 3,
+    "price": 500
   },
   {
     "id": 54,
     "location": 5,
-    "name": "Blowfish"
+    "name": "Blowfish",
+    "shadowType": 3,
+    "price": 5000
   },
   {
     "id": 55,
     "location": 5,
-    "name": "Puffer fish"
+    "name": "Puffer fish",
+    "shadowType": 3,
+    "price": 250
   },
   {
     "id": 56,
     "location": 5,
-    "name": "Anchovy"
+    "name": "Anchovy",
+    "shadowType": 2,
+    "price": 200
   },
   {
     "id": 57,
     "location": 5,
-    "name": "Horse mackerel"
+    "name": "Horse mackerel",
+    "shadowType": 2,
+    "price": 150
   },
   {
     "id": 58,
     "location": 5,
-    "name": "Barred knifejaw"
+    "name": "Barred knifejaw",
+    "shadowType": 2,
+    "price": 150
   },
   {
     "id": 59,
     "location": 5,
-    "name": "Sea bass"
+    "name": "Sea bass",
+    "shadowType": 4,
+    "price": 400
   },
   {
     "id": 60,
     "location": 5,
-    "name": "Red Snapper"
+    "name": "Red Snapper",
+    "shadowType": 4,
+    "price": 3000
   },
   {
     "id": 61,
     "location": 5,
-    "name": "Dab"
+    "name": "Dab",
+    "shadowType": 3,
+    "price": 300
   },
   {
     "id": 62,
     "location": 5,
-    "name": "Olive flounder"
+    "name": "Olive flounder",
+    "shadowType": 4,
+    "price": 800
   },
   {
     "id": 63,
     "location": 5,
-    "name": "Squid"
+    "name": "Squid",
+    "shadowType": 3,
+    "price": 500
   },
   {
     "id": 64,
     "location": 5,
-    "name": "Moray eel"
+    "name": "Moray eel",
+    "shadowType": 7,
+    "price": 2000
   },
   {
     "id": 65,
     "location": 5,
-    "name": "Ribbon eel"
+    "name": "Ribbon eel",
+    "shadowType": 7,
+    "price": 600
   },
   {
     "id": 66,
     "location": 6,
-    "name": "Tuna"
+    "name": "Tuna",
+    "shadowType": 5,
+    "price": 7000
   },
   {
     "id": 67,
     "location": 6,
-    "name": "Blue marlin"
+    "name": "Blue marlin",
+    "shadowType": 5,
+    "price": 10000
   },
   {
     "id": 68,
     "location": 6,
-    "name": "Giant trevally"
+    "name": "Giant trevally",
+    "shadowType": 4,
+    "price": 4500
   },
   {
     "id": 69,
     "location": 6,
-    "name": "Mahi-mahi"
+    "name": "Mahi-mahi",
+    "shadowType": 5,
+    "price": 6000
   },
   {
     "id": 70,
     "location": 5,
-    "name": "Ocean sunfish"
+    "name": "Ocean sunfish",
+    "shadowType": 6,
+    "price": 4000
   },
   {
     "id": 71,
     "location": 5,
-    "name": "Ray"
+    "name": "Ray",
+    "shadowType": 4,
+    "price": 3000
   },
   {
     "id": 72,
     "location": 5,
-    "name": "Saw Shark"
+    "name": "Saw Shark",
+    "shadowType": 6,
+    "price": 12000
   },
   {
     "id": 73,
     "location": 5,
-    "name": "Hammerhead shark"
+    "name": "Hammerhead shark",
+    "shadowType": 6,
+    "price": 8000
   },
   {
     "id": 74,
     "location": 5,
-    "name": "Great white shark"
+    "name": "Great white shark",
+    "shadowType": 6,
+    "price": 15000
   },
   {
     "id": 75,
     "location": 5,
-    "name": "Whale shark"
+    "name": "Whale shark",
+    "shadowType": 6,
+    "price": 13000
   },
   {
     "id": 76,
     "location": 5,
-    "name": "Suckerfish"
+    "name": "Suckerfish",
+    "shadowType": 6,
+    "price": 1500
   },
   {
     "id": 77,
     "location": 5,
-    "name": "Football fish"
+    "name": "Football fish",
+    "shadowType": 4,
+    "price": 2500
   },
   {
     "id": 78,
     "location": 5,
-    "name": "Oarfish"
+    "name": "Oarfish",
+    "shadowType": 5,
+    "price": 9000
   },
   {
     "id": 79,
     "location": 5,
-    "name": "Barreleye"
+    "name": "Barreleye",
+    "shadowType": 2,
+    "price": 15000
   },
   {
     "id": 80,
     "location": 5,
-    "name": "Coelacanth"
+    "name": "Coelacanth",
+    "shadowType": 5,
+    "price": 15000
   }
 ]

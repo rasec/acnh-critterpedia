@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Very Small"
+  },
+  {
+    "id": 2,
+    "name": "Small"
+  },
+  {
+    "id": 3,
+    "name": "Medium"
+  },
+  {
+    "id": 4,
+    "name": "Large"
+  },
+  {
+    "id": 5,
+    "name": "Huge"
+  },
+  {
+    "id": 6,
+    "name": "Finned"
+  },
+  {
+    "id": 7,
+    "name": "Long & Thin"
+  }
+]
