@@ -6,6 +6,7 @@ import './index.scss';
 import fishesData from './data/fishes.json';
 import shadows from './data/shadows.json';
 import locations from './data/locations.json';
+import availabilityTypes from './data/availabilityTypes.json';
 
 const sortTypes = [
   {
@@ -26,12 +27,38 @@ class CritterPedia extends React.Component {
     this.selectItem = this.selectItem.bind(this);
     this.searchChange = this.searchChange.bind(this);
     this.sortBy = this.sortBy.bind(this);
+    this.selectShadowType = this.selectShadowType.bind(this);
+    this.selectItemWithFn = this.selectItemWithFn.bind(this);
     this.state = {
       fishes: fishesData,
     };
   }
   selectItem(id) {
     const filterdFishes = fishesData.filter(fish => (fish.location === id));
+    this.setState({
+      fishes: filterdFishes
+    });
+  }
+  availableNow() {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMonth = (now.getMonth() + 1);
+    const filterdFishes = fishesData.filter(fish => (fish.hoursAvailable && fish.hoursAvailable.includes(currentHour) && fish.monthsAvailable && fish.monthsAvailable.includes(currentMonth)));
+    this.setState({
+      fishes: filterdFishes
+    });
+  }
+  newThisMonth() {
+  }
+  endThisMonth() {
+  }
+
+  selectItemWithFn(fnName) {
+    this[fnName]();
+  }
+
+  selectShadowType(id) {
+    const filterdFishes = fishesData.filter(fish => (fish.shadowType === id));
     this.setState({
       fishes: filterdFishes
     });
@@ -54,7 +81,7 @@ class CritterPedia extends React.Component {
   render() {
     return (
       <div className="critterpedia">
-        <CritterPediaHeader selectLocationHandler={this.selectItem} handleSearchChange={this.searchChange} sortByHandler={this.sortBy} />
+        <CritterPediaHeader selectLocationHandler={this.selectItem} selectShadowTypeHandler={this.selectShadowType} selectItemWithFnHandler={this.selectItemWithFn} handleSearchChange={this.searchChange} sortByHandler={this.sortBy} />
         <div className="critterpedia-grid">
           {(() => {
             return this.state.fishes.map((fish) => {
@@ -73,7 +100,9 @@ class CritterPediaHeader extends React.Component {
   render() {
     return (
       <div class="critterpedia-header">
-        <PlaceSelector selectItemHandler={this.props.selectLocationHandler} />
+        <Selector selectItemHandler={this.props.selectLocationHandler} items={locations} filterName='Location' />
+        <Selector selectItemHandler={this.props.selectShadowTypeHandler} items={shadows} filterName='Shadow Type' />
+        <AvailabilitySelector selectItemWithFnHandler={this.props.selectItemWithFnHandler} items={availabilityTypes} filterName='Availability Type' />
         <SortSelector sortBy={this.props.sortByHandler} />
         <CritterPediaInput handleSearchChange={this.props.handleSearchChange} />
       </div>
@@ -97,12 +126,12 @@ class CritterPediaItem extends React.Component {
   }
 }
 
-class PlaceSelector extends React.Component {
+class Selector extends React.Component {
   constructor(props) {
     super(props);
     this.selectItem = this.selectItem.bind(this);
     this.state = {
-      selectedItem: 'Select a location',
+      selectedItem: `Select ${this.props.filterName}`,
     };
   }
   selectItem(id, name) {
@@ -117,12 +146,37 @@ class PlaceSelector extends React.Component {
     );
   }
   render() {
-
     return (
       <DropdownButton variant="info" title={this.state.selectedItem}>
         {(() => {
-          return locations.map(({ id, name }) => {
+          return this.props.items.map(({ id, name }) => {
             return this.renderSelectorItem(id, name);
+          });
+        })()
+        }
+      </DropdownButton>
+    );
+  }
+}
+
+class AvailabilitySelector extends Selector {
+  selectItem(name, fnName) {
+    this.setState({
+      selectedItem: name
+    });
+    this.props.selectItemWithFnHandler(fnName)
+  }
+  renderSelectorItem(id, name, fnName) {
+    return (
+      <Dropdown.Item key={id} id={id} onSelect={() => { this.selectItem(name, fnName) }}>{name}</Dropdown.Item>
+    );
+  }
+  render() {
+    return (
+      <DropdownButton variant="info" title={this.state.selectedItem}>
+        {(() => {
+          return this.props.items.map(({ id, name, fnName }) => {
+            return this.renderSelectorItem(id, name, fnName);
           });
         })()
         }

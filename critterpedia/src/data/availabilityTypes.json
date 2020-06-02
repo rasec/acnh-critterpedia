@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Available",
+    "fnName": "availableNow"
+  },
+  {
+    "id": 2,
+    "name": "New this month",
+    "fnName": "newThisMonth"
+  },
+  {
+    "id": 3,
+    "name": "End this month",
+    "fnName": "endThisMonth"
+  }
+]
