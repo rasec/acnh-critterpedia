@@ -4,7 +4,7 @@ Critterpedia is a web app with the look & feel of the critterpedia in Animal Cro
 
 It is bring to help people with the fishing and bug hunting
 
-##Features
+## Features
 - Location filter
 - Price Order
 - Shadow Type Filter
