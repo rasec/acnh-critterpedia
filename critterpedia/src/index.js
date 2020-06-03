@@ -81,14 +81,12 @@ class CritterPedia extends React.Component {
 
   selectShadowType(id) {
     const filterdFishes = fishesData.filter(fish => (fish.shadowType === id));
-    debugger;
     this.setState({
       fishes: filterdFishes
     });
   }
   searchChange(text) {
     const filterdFishes = fishesData.filter(fish => (!text || fish.name.toLowerCase().includes(text.toLowerCase())));
-    debugger;
     this.setState({
       fishes: filterdFishes
     });
