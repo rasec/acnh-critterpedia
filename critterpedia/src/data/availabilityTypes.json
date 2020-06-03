@@ -12,6 +12,6 @@
   {
     "id": 3,
     "name": "Leaving this month",
-    "fnName": "endThisMonth"
+    "fnName": "leaveThisMonth"
   }
 ]

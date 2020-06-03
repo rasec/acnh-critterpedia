@@ -48,7 +48,6 @@ class CritterPedia extends React.Component {
     });
   }
   availableNow() {
-    debugger;
     const now = new Date();
     const currentHour = now.getHours();
     const currentMonth = (now.getMonth() + 1);
@@ -59,7 +58,7 @@ class CritterPedia extends React.Component {
   }
   newThisMonth() {
   }
-  endThisMonth() {
+  leaveThisMonth() {
   }
 
   showModal(item) {
@@ -93,7 +92,6 @@ class CritterPedia extends React.Component {
   }
   sortBy(sortFn, keyToSort) {
     const sortedFishes = fishesData.sort((a, b) => sortFn(a, b, keyToSort));
-    debugger;
     this.setState({
       fishes: sortedFishes
     });
