@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
+import Badge from 'react-bootstrap/Badge';
+import Modal from 'react-bootstrap/Modal';
+import Card from 'react-bootstrap/Card';
 import './index.scss';
 import fishesData from './data/fishes.json';
 import shadows from './data/shadows.json';
 import locations from './data/locations.json';
 import availabilityTypes from './data/availabilityTypes.json';
+import Button from 'react-bootstrap/Button';
 
 const sortTypes = [
   {
@@ -29,8 +33,12 @@ class CritterPedia extends React.Component {
     this.sortBy = this.sortBy.bind(this);
     this.selectShadowType = this.selectShadowType.bind(this);
     this.selectItemWithFn = this.selectItemWithFn.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
     this.state = {
       fishes: fishesData,
+      selectedItem: fishesData[0],
+      showModal: false
     };
   }
   selectItem(id) {
@@ -40,6 +48,7 @@ class CritterPedia extends React.Component {
     });
   }
   availableNow() {
+    debugger;
     const now = new Date();
     const currentHour = now.getHours();
     const currentMonth = (now.getMonth() + 1);
@@ -53,35 +62,52 @@ class CritterPedia extends React.Component {
   endThisMonth() {
   }
 
+  showModal(item) {
+    this.setState({
+      selectedItem: item,
+      showModal: true
+    });
+  }
+
+  hideModal(){
+    this.setState({
+      showModal: false
+    });
+  }
+
   selectItemWithFn(fnName) {
     this[fnName]();
   }
 
   selectShadowType(id) {
     const filterdFishes = fishesData.filter(fish => (fish.shadowType === id));
+    debugger;
     this.setState({
       fishes: filterdFishes
     });
   }
   searchChange(text) {
     const filterdFishes = fishesData.filter(fish => (!text || fish.name.toLowerCase().includes(text.toLowerCase())));
+    debugger;
     this.setState({
       fishes: filterdFishes
     });
   }
   sortBy(sortFn, keyToSort) {
     const sortedFishes = fishesData.sort((a, b) => sortFn(a, b, keyToSort));
+    debugger;
     this.setState({
       fishes: sortedFishes
     });
   }
   renderCell(critter, location) {
-    return <CritterPediaCell key={critter.id} critter={critter} location={location} />
+    return <CritterPediaCell key={critter.id} critter={critter} location={location} showModal={this.showModal} />
   }
   render() {
     return (
       <div className="critterpedia">
         <CritterPediaHeader selectLocationHandler={this.selectItem} selectShadowTypeHandler={this.selectShadowType} selectItemWithFnHandler={this.selectItemWithFn} handleSearchChange={this.searchChange} sortByHandler={this.sortBy} />
+        <CritterPediaItem showModal={this.state.showModal} item={this.state.selectedItem} hideModal={this.hideModal}/>
         <div className="critterpedia-grid">
           {(() => {
             return this.state.fishes.map((fish) => {
@@ -99,7 +125,7 @@ class CritterPedia extends React.Component {
 class CritterPediaHeader extends React.Component {
   render() {
     return (
-      <div class="critterpedia-header">
+      <div className="critterpedia-header">
         <Selector selectItemHandler={this.props.selectLocationHandler} items={locations} filterName='Location' />
         <Selector selectItemHandler={this.props.selectShadowTypeHandler} items={shadows} filterName='Shadow Type' />
         <AvailabilitySelector selectItemWithFnHandler={this.props.selectItemWithFnHandler} items={availabilityTypes} filterName='Availability Type' />
@@ -113,16 +139,38 @@ class CritterPediaHeader extends React.Component {
 class CritterPediaCell extends React.Component {
   render() {
     return (<div className="critterpedia-cell" id={this.props.critter.id}>
-      <img src={require(`./data/images/fish${this.props.critter.id}.png`)} />
-      {this.props.critter.id}. {this.props.critter.name}<br />
-      {this.props.critter.price}<br />
-      {shadows[this.props.critter.shadowType - 1].name}</div>);
+      <Button className="criterpedia-cell-button" onClick={() => { this.props.showModal(this.props.critter)}} >
+        <Badge pill variant="warning">
+        {this.props.critter.name}
+        </Badge>
+        <img src={require(`./data/images/fish${this.props.critter.id}.png`)} />
+        </Button>
+      </div>);
   }
 }
 
 class CritterPediaItem extends React.Component {
   render() {
-    return (<div className="critterpedia-item"></div>);
+    return (<div className="critterpedia-item">
+      <Modal show={this.props.showModal} onHide={this.props.hideModal} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>{this.props.item.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Card style={{ width: '100%' }}>
+          <Card.Img className="critterpedia-item-img" variant="top" src={require(`./data/images/fish${this.props.item.id}.png`)} />
+          <Card.Body>
+            <Card.Title>{this.props.item.id}. {this.props.item.name}<br /></Card.Title>
+            <Card.Text>
+              Price: {this.props.item.price} <br/>
+              ShowType: {shadows[this.props.item.shadowType - 1].name}<br/>
+              Habitat: {locations[this.props.item.location - 1].name}<br/>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        </Modal.Body>
+      </Modal>
+    </div>);
   }
 }
 

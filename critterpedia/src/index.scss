@@ -40,6 +40,15 @@ code {
     vertical-align: middle;
 }
 
+.btn-primary {
+    background: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 .critterpedia-cell img {
     max-width: 65%;
     display: block;
@@ -52,4 +61,10 @@ code {
 .critterpedia-header > * {
     display: inline-block;
     margin: 2%;
+}
+
+.critterpedia-item-img {
+    width: 150px;
+    display: block;
+    margin: auto;
 }
