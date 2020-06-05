@@ -43,6 +43,10 @@ code {
     border-spacing: 5px;
     text-align: center;
     vertical-align: middle;
+
+    .critter-name {
+        text-transform: capitalize;
+    }
 }
 
 .btn-primary {
@@ -143,6 +147,8 @@ code {
     height: 20px;
     border-bottom: 2px solid grey;
     border-left: 1px solid grey;
+    font-size: 20px;
+    line-height: 20px;
 }
 
 .hour {

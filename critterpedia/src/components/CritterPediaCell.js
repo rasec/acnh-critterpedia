@@ -6,7 +6,7 @@ class CritterPediaCell extends React.Component {
   render() {
     return (<div className="critterpedia-cell" id={this.props.critter.id}>
       <Button className="criterpedia-cell-button" onClick={() => { this.props.showModal(this.props.critter) }} >
-        <Badge pill variant="warning">
+        <Badge pill variant="warning" className="critter-name">
           {this.props.critter.name}
         </Badge>
         <img src={require(`./../data/images/fish${this.props.critter.id}.png`)} />
