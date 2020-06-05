@@ -30,7 +30,7 @@ const getClassNameHour = (hourNumber, hoursAvailable) => {
     className = `${className} marked`;
   }
 
-  if(((new Date()).getUTCHours()) === hourNumber) {
+  if(((new Date()).getHours()) === hourNumber) {
     className = `${className} current`;
   }
   return className;
