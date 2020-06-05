@@ -4,9 +4,14 @@
 *::after {
     box-sizing: inherit;
 }
+
+@font-face {
+    font-family: 'SourceSans';
+    src: local('SourceSans'), url(./fonts/SourceSansPro-Regular.ttf) format('truetype');
+}
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    font-family: 'SourceSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
         'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
         'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -64,7 +69,27 @@ code {
 }
 .critterpedia-item-modal .modal-content {
     background: #ece0b0;
-
+    font-size: 22px;
+    .modal-header {
+        .modal-title{
+            display: block;
+            margin: auto;
+            .badge {
+                outline: double grey;
+                outline-offset: -6px;
+                padding: 16px 50px;
+                box-shadow: 1px 4px 2px #666;
+                transform: rotate(-3deg);
+                background: #F9F5DC;
+                font-size: 22px;
+                font-style: italic;
+                text-transform: capitalize;
+            }
+        }
+        .close {
+            margin-left: 0;
+        }
+    }
     .card {
         background: #ece0b0;
     }
@@ -73,6 +98,44 @@ code {
     width: 150px;
     display: block;
     margin: auto;
+}
+
+.card-body {
+    padding: 0;
+}
+
+.cardRow {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+
+    &.row2 {
+        .cardCell {
+            width: 50%;
+        }
+    }
+
+    &.row3 {
+        .cardCell {
+            width: 33%;
+        }
+    }
+
+    &.withBorder {
+        .cardCell {
+            border: 1px groove;
+        }
+    }
+
+    .cardCell {
+        .title {
+            margin-left: 20px;
+        }
+    }
+
+    .cols2-content {
+        margin: 0 0 0 30px;
+    }
 }
 
 .hoursBar {
@@ -87,9 +150,13 @@ code {
     display: inline-block;
     height: 100%;
     content: '';
-    border-right: 1px solid grey;
+    border-right: 1px solid grey; 
     &.filled {
         background-color: #c8bc0d;
+    }
+
+    &.current {
+        border-right: 1px dotted red; 
     }
 }
 
@@ -97,12 +164,15 @@ code {
     background: #d3d184;
     display: inline-block;
     padding: 0 5px;
+    font-weight: bold;
+    font-style: italic;
+    
+    line-height: 22px;
 }
 
 .calendar {
     width: 336px;
     height: 128px;
-    margin: 0;
     .row {
         width: 100%;
         height: 41px;
@@ -110,10 +180,11 @@ code {
         .month {
             width: 82px;
             height: 39px;
-            border: 1px solid black;
+            border: 1px groove;
             text-align: center;
             vertical-align: middle;
             line-height: 40px;
+            font-weight: bold;
             color: rgba(0, 0, 0, 0.3);
             &.filled {
                 background-color: #c8bc0d;
