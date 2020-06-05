@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Badge from 'react-bootstrap/Badge';
-import Modal from 'react-bootstrap/Modal';
-import Card from 'react-bootstrap/Card';
+import CritterPediaDetail from './components/CritterPediaDetail';
 import './index.scss';
 import fishesData from './data/fishes.json';
 import shadows from './data/shadows.json';
@@ -68,7 +67,7 @@ class CritterPedia extends React.Component {
     });
   }
 
-  hideModal(){
+  hideModal() {
     this.setState({
       showModal: false
     });
@@ -103,7 +102,7 @@ class CritterPedia extends React.Component {
     return (
       <div className="critterpedia">
         <CritterPediaHeader selectLocationHandler={this.selectItem} selectShadowTypeHandler={this.selectShadowType} selectItemWithFnHandler={this.selectItemWithFn} handleSearchChange={this.searchChange} sortByHandler={this.sortBy} />
-        <CritterPediaItem showModal={this.state.showModal} item={this.state.selectedItem} hideModal={this.hideModal}/>
+        <CritterPediaDetail showModal={this.state.showModal} item={this.state.selectedItem} hideModal={this.hideModal} />
         <div className="critterpedia-grid">
           {(() => {
             return this.state.fishes.map((fish) => {
@@ -135,37 +134,12 @@ class CritterPediaHeader extends React.Component {
 class CritterPediaCell extends React.Component {
   render() {
     return (<div className="critterpedia-cell" id={this.props.critter.id}>
-      <Button className="criterpedia-cell-button" onClick={() => { this.props.showModal(this.props.critter)}} >
+      <Button className="criterpedia-cell-button" onClick={() => { this.props.showModal(this.props.critter) }} >
         <Badge pill variant="warning">
-        {this.props.critter.name}
+          {this.props.critter.name}
         </Badge>
         <img src={require(`./data/images/fish${this.props.critter.id}.png`)} />
-        </Button>
-      </div>);
-  }
-}
-
-class CritterPediaItem extends React.Component {
-  render() {
-    return (<div className="critterpedia-item">
-      <Modal show={this.props.showModal} onHide={this.props.hideModal} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>{this.props.item.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <Card style={{ width: '100%' }}>
-          <Card.Img className="critterpedia-item-img" variant="top" src={require(`./data/images/fish${this.props.item.id}.png`)} />
-          <Card.Body>
-            <Card.Title>{this.props.item.id}. {this.props.item.name}<br /></Card.Title>
-            <Card.Text>
-              Price: {this.props.item.price} <br/>
-              ShowType: {shadows[this.props.item.shadowType - 1].name}<br/>
-              Habitat: {locations[this.props.item.location - 1].name}<br/>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        </Modal.Body>
-      </Modal>
+      </Button>
     </div>);
   }
 }
@@ -212,7 +186,7 @@ class AvailabilitySelector extends Selector {
   }
   renderSelectorItem(id, name, fnName) {
     return (
-      <Dropdown.Item key={id} id={id} onSelect={() => { this.selectItem(name, fnName) }}>{name}</Dropdown.Item>
+      <Dropdown.Item key={id} onSelect={() => { this.selectItem(name, fnName) }}>{name}</Dropdown.Item>
     );
   }
   render() {

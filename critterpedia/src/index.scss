@@ -19,7 +19,7 @@ code {
 }
 
 .critterpedia {
-    background-color: #fffacd;
+    background-color: #f3eec7;
 }
 
 .critterpedia-grid {
@@ -62,9 +62,67 @@ code {
     display: inline-block;
     margin: 2%;
 }
+.critterpedia-item-modal .modal-content {
+    background: #ece0b0;
 
+    .card {
+        background: #ece0b0;
+    }
+}
 .critterpedia-item-img {
     width: 150px;
     display: block;
     margin: auto;
+}
+
+.hoursBar {
+    width: 264px;
+    height: 20px;
+    border-bottom: 2px solid grey;
+    border-left: 1px solid grey;
+}
+
+.hour {
+    width: 10px;
+    display: inline-block;
+    height: 100%;
+    content: '';
+    border-right: 1px solid grey;
+    &.filled {
+        background-color: #c8bc0d;
+    }
+}
+
+.title {
+    background: #d3d184;
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.calendar {
+    width: 336px;
+    height: 128px;
+    margin: 0;
+    .row {
+        width: 100%;
+        height: 41px;
+        margin: 0;
+        .month {
+            width: 82px;
+            height: 39px;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 40px;
+            color: rgba(0, 0, 0, 0.3);
+            &.filled {
+                background-color: #c8bc0d;
+                color: rgba(0, 0, 0, 1);
+            }
+            &.current {
+                outline: 3px solid red;
+                outline-offset: -2px;
+            }
+        }
+    }
 }
