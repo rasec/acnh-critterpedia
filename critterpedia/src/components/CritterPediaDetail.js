@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import Card from 'react-bootstrap/Card';
 
