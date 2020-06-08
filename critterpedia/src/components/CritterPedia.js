@@ -21,27 +21,43 @@ class CritterPedia extends React.Component {
     this.state = {
       fishes: fishesData,
       selectedItem: fishesData[0],
-      showModal: false
+      showModal: false,
+      locationType: undefined,
+      shadowType: undefined,
+      availableTypeFn: undefined,
+      sort: {}
     };
   }
-  selectItem(id) {
-    const filterdFishes = fishesData.filter(fish => (fish.location === id));
+  updateFishes(nextState) {
+    const locationFilter = nextState.locationType;
+    const shadowFilter = nextState.shadowType;
+    const availableTypeFilterFn = nextState.availableTypeFn;
+    const { sortFn, keyToSort } = nextState.sort;
+
+    let filteredFishes = fishesData.filter(fish => (locationFilter ? (fish.location === locationFilter) : true));
+    filteredFishes = filteredFishes.filter(fish => (shadowFilter ? (fish.shadowType === shadowFilter) : true));
+    if (availableTypeFilterFn && this[availableTypeFilterFn]) {
+      filteredFishes = this[availableTypeFilterFn](filteredFishes);
+    }
+    if (sortFn) {
+      filteredFishes = filteredFishes.sort((a, b) => sortFn(a, b, keyToSort));
+    }
     this.setState({
-      fishes: filterdFishes
+      fishes: filteredFishes
     });
   }
-  availableNow() {
+
+  selectItem(id) {
+    this.setState({
+      locationType: id
+    });
+  }
+
+  availableNow(fishesData) {
     const now = new Date();
     const currentHour = now.getHours();
     const currentMonth = (now.getMonth() + 1);
-    const filterdFishes = fishesData.filter(fish => (fish.hoursAvailable && fish.hoursAvailable.includes(currentHour) && fish.monthsAvailable && fish.monthsAvailable.includes(currentMonth)));
-    this.setState({
-      fishes: filterdFishes
-    });
-  }
-  newThisMonth() {
-  }
-  leaveThisMonth() {
+    return fishesData.filter(fish => (fish.hoursAvailable && fish.hoursAvailable.includes(currentHour) && fish.monthsAvailable && fish.monthsAvailable.includes(currentMonth)));
   }
 
   showModal(item) {
@@ -58,13 +74,14 @@ class CritterPedia extends React.Component {
   }
 
   selectItemWithFn(fnName) {
-    this[fnName]();
+    this.setState({
+      availableTypeFn: fnName
+    });
   }
 
   selectShadowType(id) {
-    const filterdFishes = fishesData.filter(fish => (fish.shadowType === id));
     this.setState({
-      fishes: filterdFishes
+      shadowType: id
     });
   }
   searchChange(text) {
@@ -74,13 +91,26 @@ class CritterPedia extends React.Component {
     });
   }
   sortBy(sortFn, keyToSort) {
-    const sortedFishes = fishesData.sort((a, b) => sortFn(a, b, keyToSort));
     this.setState({
-      fishes: sortedFishes
+      sort: { sortFn, keyToSort }
     });
   }
   renderCell(critter, location) {
     return <CritterPediaCell key={critter.id} critter={critter} location={location} showModal={this.showModal} />
+  }
+
+  hasChangesInFilters(currentState, nextState) {
+    return currentState.locationType !== nextState.locationType ||
+      currentState.shadowType !== nextState.shadowType ||
+      currentState.availableTypeFn !== nextState.availableTypeFn ||
+      currentState.sort !== nextState.sort;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.hasChangesInFilters(this.state, nextState)) {
+      this.updateFishes(nextState);
+    }
+    return this.state !== nextState;
   }
   render() {
     return (
