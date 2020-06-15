@@ -115,7 +115,7 @@ code {
 
     &.row2 {
         .cardCell {
-            width: 50%;
+            width: 49.7%;
         }
     }
 
@@ -200,6 +200,35 @@ code {
                 outline: 3px solid red;
                 outline-offset: -2px;
             }
+        }
+    }
+}
+
+.tabs {
+    margin: 20px auto;
+    width: 154px;
+    border: none;
+    .tab {
+        border-radius: 40px;
+        border-color: transparent !important;
+        height: 80px;
+        width: 80px;
+        padding: 0;
+        background-color: #f6f7e0 !important;
+        img {
+            height: 60px;
+            width: 60px;
+            margin: 0 auto;
+            display: inline-block;
+            margin: 10px 0 0 10px;
+        }
+
+        &.fish {
+            margin-right: -5px;
+        }
+
+        &.bug {
+            margin-left: -5px;
         }
     }
 }

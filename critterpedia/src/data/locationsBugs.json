@@ -1,0 +1,98 @@
+[
+  {
+    "id": 0,
+    "name": "All"
+  },
+  {
+    "id": 1,
+    "name": "Near flowers"
+  },
+  {
+    "id": 2,
+    "name": "On trees"
+  },
+  {
+    "id": 3,
+    "name": "On rotten turnips"
+  },
+  {
+    "id": 4,
+    "name": "Shake tree"
+  },
+  {
+    "id": 5,
+    "name": "Flying"
+  },
+  {
+    "id": 6,
+    "name": "Ground"
+  },
+  {
+    "id": 7,
+    "name": "Hit rocks"
+  
+  },
+  {
+    "id": 8,
+    "name": "On palm trees"
+  
+  },
+  {
+    "id": 9,
+    "name": "On rivers or ponds"
+  
+  },
+  {
+    "id": 10,
+    "name": "Snowballs"
+  
+  },
+  {
+    "id": 11,
+    "name": "Near rivers or ponds"
+  },
+  {
+    "id": 12,
+    "name": "On a flea-infested villager"
+  },
+  {
+    "id": 13,
+    "name": "On garbage"
+  },
+  {
+    "id": 14,
+    "name":"On tree stumps"
+  },
+  {
+    "id": 15,
+    "name": "Beach"
+  },
+  {
+    "id": 16,
+    "name": "On flowers"
+  },
+  {
+    "id": 17,
+    "name": "Underground"
+  },
+  {
+    "id": 18,
+    "name": "Lit windows"
+  },
+  {
+    "id": 19,
+    "name": "On white flowers"
+  },
+  {
+    "id": 20,
+    "name": "Near black, blue, or purple flowers"
+  },
+  {
+    "id": 21,
+    "name": "Rock (rain)"
+  },
+  {
+    "id": 22,
+    "name": "Beach (rocks)"
+  }
+]

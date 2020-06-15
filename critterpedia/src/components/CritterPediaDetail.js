@@ -3,8 +3,15 @@ import Modal from 'react-bootstrap/Modal';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 
-import shadows from '../data/shadows.json';
-import locations from '../data/locations.json';
+import locationsFishes from '../data/locations.json';
+import locationsBugs from '../data/locationsBugs.json';
+
+import {CRITTER_TYPE, CRITTER_TYPE_NAME} from '../constants';
+
+const locations = {
+  [CRITTER_TYPE.FISH]: locationsFishes,
+  [CRITTER_TYPE.BUG]: locationsBugs
+};
 
 const getClassNameMonth = (monthNumber, monthsAvailable) => {
   let className = "month"
@@ -23,8 +30,6 @@ const getClassNameHour = (hourNumber, hoursAvailable) => {
   if(hoursAvailable.includes(hourNumber)) {
     className = `${className} filled`;
   }
-  console.log(hourNumber);
-  console.log(hourNumber%6);
 
   if(hourNumber%6 === 0) {
     className = `${className} marked`;
@@ -94,38 +99,45 @@ function ActiveHoursBar(props) {
 
 class CritterPediaDetail extends React.Component {
   render() {
+    let shadow, critterUrl;
+    if(this.props.critterType && this.props.critterType === CRITTER_TYPE.FISH) {
+      shadow = <div className='cardCell'><span className="title" >ShadowType</span> <img className="critterpedia-shadow-img" src={`${process.env.PUBLIC_URL}/images/shadows/shadow${this.props.critter.shadowType}.png`} /></div>;
+      critterUrl = `${process.env.PUBLIC_URL}/images/${CRITTER_TYPE_NAME.FISH.toLowerCase()}/${CRITTER_TYPE.FISH.toLowerCase()}${this.props.critter.id}.png`;
+    } else {
+      critterUrl = `${process.env.PUBLIC_URL}/images/${CRITTER_TYPE_NAME.BUG.toLowerCase()}/${CRITTER_TYPE.BUG.toLowerCase()}${this.props.critter.id}.png`;
+    }
+    const critterLocations = locations[this.props.critterType];
+
     return (<div>
       <Modal show={this.props.showModal} onHide={this.props.hideModal} size="lg" centered className="critterpedia-item-modal">
         <Modal.Header closeButton>
           <Modal.Title>
-            <Badge variant="light">{this.props.item.name}</Badge>
+            <Badge variant="light">{this.props.critter.name}</Badge>
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Card style={{ width: '100%' }}>
-            <Card.Img className="critterpedia-item-img" variant="top" src={require(`../data/images/fish${this.props.item.id}.png`)} />
+            <Card.Img className="critterpedia-item-img" variant="top" src={critterUrl} />
             <Card.Body>
               <div className="">
                 <div className="cardRow row2">
                   <div className='cardCell'>
                     <div className="title">Seasonality</div>
-                    <Calendar months={this.props.item.monthsAvailable} />
+                    <Calendar months={this.props.critter.monthsAvailable} />
                   </div>  
                   <div className='cardCell'>
                     <div className="title">Current Active Hours</div>
-                    <ActiveHoursBar hours={this.props.item.hoursAvailable} />
+                    <ActiveHoursBar hours={this.props.critter.hoursAvailable} />
                   </div>
                 </div>
-                <div className="cardRow row3 withBorder">
+                <div className={`cardRow ${(this.props.critterType && this.props.critterType === CRITTER_TYPE.FISH) ? 'row3' : 'row2'} withBorder`}>
                 <div className='cardCell'>
-                 <span className="title" >Location</span> {locations[this.props.item.location - 1].name}
+                 <span className="title" >Location</span> {critterLocations[this.props.critter.location].name}
                 </div>
                 <div className='cardCell'>
-                <span className="title" >Price</span> {this.props.item.price}
+                <span className="title" >Price</span> {this.props.critter.price}
                 </div>
-                <div className='cardCell'>
-                <span className="title" >ShadowType</span> {shadows[this.props.item.shadowType - 1].name}
-                </div>
+                {shadow}
               </div>
               </div>
             </Card.Body>
