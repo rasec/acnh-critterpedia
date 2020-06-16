@@ -37,7 +37,7 @@ class SortSelector extends React.Component {
   render() {
 
     return (
-      <DropdownButton variant="info" title={this.state.sortType}>
+      <DropdownButton variant="outline-info" title={this.state.sortType}>
         {(() => {
           return sortTypes.map(({ id, name, keyToSort, sortFn }) => {
             return this.renderSortItem({ id, name, sortFn, keyToSort });

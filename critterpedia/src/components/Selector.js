@@ -23,7 +23,7 @@ class Selector extends React.Component {
   }
   render() {
     return (
-      <DropdownButton variant="info" title={this.state.selectedItem}>
+      <DropdownButton variant="outline-info" title={this.state.selectedItem}>
         {(() => {
           return this.props.items.map(({ id, name }) => {
             return this.renderSelectorItem(id, name);

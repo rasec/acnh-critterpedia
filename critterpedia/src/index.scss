@@ -16,6 +16,7 @@ body {
         'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: #4c3c33;
 }
 
 code {
@@ -25,22 +26,22 @@ code {
 
 .critterpedia {
     background-color: #f3eec7;
+    color: #4c3c33;
 }
 
 .critterpedia-grid {
     display: flex;
     width: auto;
-    border: 1px solid #666666;
     margin: 0 auto;
     flex-wrap: wrap;
     max-width: 760px;
+    justify-content: center;
 }
 
 .critterpedia-cell {
     width: 150px;
     height: 150px;
-    border: 1px solid grey;
-    border-spacing: 5px;
+    outline: 1px groove white;
     text-align: center;
     vertical-align: middle;
 
@@ -58,18 +59,65 @@ code {
     margin: 0;
 }
 
-.critterpedia-cell img {
-    max-width: 65%;
-    display: block;
-    margin: auto;
+.critterpedia-cell{
+
+    img {
+        max-width: 65%;
+        display: block;
+        margin: auto;
+    }
+
+    .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        border: none;
+        box-shadow: none;
+    }
+    .btn-primary:hover{
+        outline: 1px inset grey;
+        outline-offset: -5px;
+        
+    }
+
 }
 .critterpedia-header {
-    margin: auto;
-    max-width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    max-width: 760px;
+    margin: 0 auto;
 }
 .critterpedia-header > * {
-    display: inline-block;
-    margin: 2%;
+    display: block;
+    padding: 2px;
+    .btn-outline-info {
+        color: #4c3c33;
+        border-color: #4c3c33;
+
+        &:focus, &:hover {
+            background-color: #4c3c33;
+            color: white;
+        }
+    }
+
+    .dropdown-menu {
+        background-color: #faf1a3;
+        border-radius: 40px;
+    }
+    
+    .dropdown-item {
+        color: #4c3c33;
+        font-size: 20px;
+        font-weight: bold;
+        width: fit-content;
+        margin-left: 30px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        &:hover {
+            background-color: #f6c60c;
+        }
+    }
 }
 .critterpedia-item-modal .modal-content {
     background: #ece0b0;
@@ -135,6 +183,12 @@ code {
         .title {
             margin-left: 20px;
         }
+
+        img {
+            display: inline;
+            width: 75px;
+            margin: 5px;
+        }
     }
 
     .cols2-content {
@@ -143,7 +197,7 @@ code {
 }
 
 .hoursBar {
-    width: 264px;
+    width: 266px;
     height: 20px;
     border-bottom: 2px solid grey;
     border-left: 1px solid grey;
@@ -162,7 +216,7 @@ code {
     }
 
     &.current {
-        border-right: 1px dotted red; 
+        border-right: 3px dotted red; 
     }
 }
 

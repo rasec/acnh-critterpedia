@@ -18,7 +18,7 @@ class AvailabilitySelector extends Selector {
   }
   render() {
     return (
-      <DropdownButton variant="info" title={this.state.selectedItem}>
+      <DropdownButton variant="outline-info" title={this.state.selectedItem}>
         {(() => {
           return this.props.items.map(({ id, name, fnName }) => {
             return this.renderSelectorItem(id, name, fnName);
