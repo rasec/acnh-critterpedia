@@ -1,0 +1,11 @@
+{
+  "extends": "airbnb",
+  "plugins": ["react", "jsx-a11y"],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "max-len": ["error", { "code": 140, "tabWidth": 2 }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  }
+}
