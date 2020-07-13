@@ -29,20 +29,6 @@ const hasChangesInFilters = (currentState, nextState) => (
     || currentState.sort !== nextState.sort)
 );
 
-/* eslint-disable no-unused-vars */
-const availableNow = (fishesDataInput) => {
-  const now = new Date();
-  const currentHour = now.getHours();
-  const currentMonth = (now.getMonth() + 1);
-  return fishesDataInput.filter((fish) => (
-    fish.hoursAvailable
-    && fish.hoursAvailable.includes(currentHour)
-    && fish.monthsAvailable
-    && fish.monthsAvailable.includes(currentMonth)
-  ));
-};
-/* eslint-enable no-unused-vars */
-
 class CritterPedia extends React.Component {
   constructor(props) {
     super(props);
@@ -80,6 +66,20 @@ class CritterPedia extends React.Component {
     });
   }
 
+  /* eslint-disable class-methods-use-this */
+  availableNow(fishesDataInput) {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMonth = (now.getMonth() + 1);
+    return fishesDataInput.filter((fish) => (
+      fish.hoursAvailable
+      && fish.hoursAvailable.includes(currentHour)
+      && fish.monthsAvailable
+      && fish.monthsAvailable.includes(currentMonth)
+    ));
+  }
+  /* eslint-enable no-unused-vars */
+
   updateCritters(nextState) {
     const type = nextState.critterType;
     const locationFilter = nextState.locationType;
@@ -90,8 +90,8 @@ class CritterPedia extends React.Component {
     const dataToFilter = data[type];
     let filteredData = dataToFilter.filter((critter) => (locationFilter ? (critter.location === locationFilter) : true));
     filteredData = filteredData.filter((critter) => (shadowFilter ? (critter.shadowType === shadowFilter) : true));
-    if (availableTypeFilterFn) {
-      filteredData = availableTypeFilterFn(filteredData);
+    if (availableTypeFilterFn && this[availableTypeFilterFn]) {
+      filteredData = this[availableTypeFilterFn](filteredData);
     }
     if (sortFn) {
       filteredData = filteredData.sort((a, b) => sortFn(a, b, keyToSort));
