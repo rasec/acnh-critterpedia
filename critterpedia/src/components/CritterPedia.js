@@ -22,6 +22,27 @@ const data = {
   [CRITTER_TYPE.BUG]: bugsData,
 };
 
+const hasChangesInFilters = (currentState, nextState) => (
+  (currentState.locationType !== nextState.locationType
+    || currentState.shadowType !== nextState.shadowType
+    || currentState.availableTypeFn !== nextState.availableTypeFn
+    || currentState.sort !== nextState.sort)
+);
+
+/* eslint-disable no-unused-vars */
+const availableNow = (fishesDataInput) => {
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMonth = (now.getMonth() + 1);
+  return fishesDataInput.filter((fish) => (
+    fish.hoursAvailable
+    && fish.hoursAvailable.includes(currentHour)
+    && fish.monthsAvailable
+    && fish.monthsAvailable.includes(currentMonth)
+  ));
+};
+/* eslint-enable no-unused-vars */
+
 class CritterPedia extends React.Component {
   constructor(props) {
     super(props);
@@ -44,6 +65,21 @@ class CritterPedia extends React.Component {
     };
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (hasChangesInFilters(this.state, nextState)) {
+      this.updateCritters(nextState);
+    }
+    return this.state !== nextState;
+  }
+
+  setCritterType(type) {
+    this.setState({
+      critterType: type,
+      critters: data,
+      selectedItem: data[type][0],
+    });
+  }
+
   updateCritters(nextState) {
     const type = nextState.critterType;
     const locationFilter = nextState.locationType;
@@ -54,8 +90,8 @@ class CritterPedia extends React.Component {
     const dataToFilter = data[type];
     let filteredData = dataToFilter.filter((critter) => (locationFilter ? (critter.location === locationFilter) : true));
     filteredData = filteredData.filter((critter) => (shadowFilter ? (critter.shadowType === shadowFilter) : true));
-    if (availableTypeFilterFn && this[availableTypeFilterFn]) {
-      filteredData = this[availableTypeFilterFn](filteredData);
+    if (availableTypeFilterFn) {
+      filteredData = availableTypeFilterFn(filteredData);
     }
     if (sortFn) {
       filteredData = filteredData.sort((a, b) => sortFn(a, b, keyToSort));
@@ -71,13 +107,6 @@ class CritterPedia extends React.Component {
     this.setState({
       locationType: id,
     });
-  }
-
-  availableNow(fishesData) {
-    const now = new Date();
-    const currentHour = now.getHours();
-    const currentMonth = (now.getMonth() + 1);
-    return fishesData.filter((fish) => (fish.hoursAvailable && fish.hoursAvailable.includes(currentHour) && fish.monthsAvailable && fish.monthsAvailable.includes(currentMonth)));
   }
 
   showModal(item) {
@@ -126,49 +155,51 @@ class CritterPedia extends React.Component {
     return <CritterPediaCell critterType={critterType} key={critter.id} critter={critter} location={location} showModal={this.showModal} />;
   }
 
-  hasChangesInFilters(currentState, nextState) {
-    return currentState.locationType !== nextState.locationType
-      || currentState.shadowType !== nextState.shadowType
-      || currentState.availableTypeFn !== nextState.availableTypeFn
-      || currentState.sort !== nextState.sort;
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.hasChangesInFilters(this.state, nextState)) {
-      this.updateCritters(nextState);
-    }
-    return this.state !== nextState;
-  }
-
-  setCritterType(type) {
-    this.setState({
-      critterType: type,
-      critters: data,
-      selectedItem: data[type][0],
-    });
-  }
-
   render() {
-    const fishTabImage = `${process.env.PUBLIC_URL}/images/${this.state.critterType === CRITTER_TYPE.FISH ? 'fishLight' : 'fish'}.png`;
-    const bugTabImage = `${process.env.PUBLIC_URL}/images/${this.state.critterType === CRITTER_TYPE.BUG ? 'bugLight' : 'bug'}.png`;
+    const {
+      critterType,
+      showModal,
+      selectedItem,
+      critters,
+    } = this.state;
+    const fishTabImage = `${process.env.PUBLIC_URL}/images/${critterType === CRITTER_TYPE.FISH ? 'fishLight' : 'fish'}.png`;
+    const bugTabImage = `${process.env.PUBLIC_URL}/images/${critterType === CRITTER_TYPE.BUG ? 'bugLight' : 'bug'}.png`;
     return (
       <div className="critterpedia">
-        <CritterPediaHeader critterType={this.state.critterType} selectLocationHandler={this.selectItem} selectShadowTypeHandler={this.selectShadowType} selectItemWithFnHandler={this.selectItemWithFn} handleSearchChange={this.searchChange} sortByHandler={this.sortBy} />
+        <CritterPediaHeader
+          critterType={critterType}
+          selectLocationHandler={this.selectItem}
+          selectShadowTypeHandler={this.selectShadowType}
+          selectItemWithFnHandler={this.selectItemWithFn}
+          handleSearchChange={this.searchChange}
+          sortByHandler={this.sortBy}
+        />
         <Nav variant="tabs" defaultActiveKey={CRITTER_TYPE.FISH} onSelect={(critter) => this.setCritterType(critter)} className="tabs">
           <Nav.Item>
-            <Nav.Link eventKey={CRITTER_TYPE.FISH} title={CRITTER_TYPE_NAME.FISH} className="tab fish"><img src={fishTabImage} /></Nav.Link>
+            <Nav.Link
+              eventKey={CRITTER_TYPE.FISH}
+              title={CRITTER_TYPE_NAME.FISH}
+              className="tab fish"
+            >
+              <img src={fishTabImage} alt="" />
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey={CRITTER_TYPE.BUG} title={CRITTER_TYPE_NAME.BUG} className="tab bug"><img src={bugTabImage} /></Nav.Link>
+            <Nav.Link
+              eventKey={CRITTER_TYPE.BUG}
+              title={CRITTER_TYPE_NAME.BUG}
+              className="tab bug"
+            >
+              <img src={bugTabImage} alt="" />
+            </Nav.Link>
           </Nav.Item>
         </Nav>
-        <CritterPediaDetail critterType={this.state.critterType} showModal={this.state.showModal} critter={this.state.selectedItem} hideModal={this.hideModal} />
+        <CritterPediaDetail critterType={critterType} showModal={showModal} critter={selectedItem} hideModal={this.hideModal} />
         <div className="critterpedia-grid">
           {(() => {
-            const { critterType } = this.state;
-            const critters = this.state.critters[this.state.critterType] || [];
-            const critterLocations = locations[this.state.critterType];
-            return critters.map((critter) => {
+            const crittersInner = critters[critterType] || [];
+            const critterLocations = locations[critterType];
+            return crittersInner.map((critter) => {
               const critterLocation = critterLocations.find((location) => (critter.location === location.id));
               return this.renderCell(critter, critterLocation, critterType);
             });

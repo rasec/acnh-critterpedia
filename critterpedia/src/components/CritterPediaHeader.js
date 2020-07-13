@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Selector from './Selector';
 import AvailabilitySelector from './AvailabilitySelector';
 import SortSelector from './SortSelector';
@@ -16,26 +17,43 @@ const locations = {
   bug: locationsBugs,
 };
 
-class CritterPediaHeader extends React.Component {
-  render() {
-    let shadowSelector;
-    const { critterType } = this.props;
-    if (critterType === CRITTER_TYPE.FISH) {
-      shadowSelector = <Selector
-        selectItemHandler={this.props.selectShadowTypeHandler}
+function CritterPediaHeader(props) {
+  let shadowSelector;
+  const {
+    critterType,
+    selectShadowTypeHandler,
+    selectLocationHandler,
+    selectItemWithFnHandler,
+    sortByHandler,
+    handleSearchChange,
+  } = props;
+  if (critterType === CRITTER_TYPE.FISH) {
+    shadowSelector = (
+      <Selector
+        selectItemHandler={selectShadowTypeHandler}
         items={shadows}
-        filterName="Shadow Type" />;
-    }
-    return (
-      <div className="critterpedia-header">
-        <Selector selectItemHandler={this.props.selectLocationHandler} items={locations[this.props.critterType]} filterName="Location" />
-        {shadowSelector}
-        <AvailabilitySelector selectItemWithFnHandler={this.props.selectItemWithFnHandler} items={availabilityTypes} filterName="Availability Type" />
-        <SortSelector sortBy={this.props.sortByHandler} />
-        <CritterPediaInput handleSearchChange={this.props.handleSearchChange} />
-      </div>
+        filterName="Shadow Type"
+      />
     );
   }
+  return (
+    <div className="critterpedia-header">
+      <Selector selectItemHandler={selectLocationHandler} items={locations[critterType]} filterName="Location" />
+      {shadowSelector}
+      <AvailabilitySelector selectItemWithFnHandler={selectItemWithFnHandler} items={availabilityTypes} filterName="Availability Type" />
+      <SortSelector sortBy={sortByHandler} />
+      <CritterPediaInput handleSearchChange={handleSearchChange} />
+    </div>
+  );
 }
+
+CritterPediaHeader.propTypes = {
+  critterType: PropTypes.string.isRequired,
+  selectShadowTypeHandler: PropTypes.func.isRequired,
+  selectLocationHandler: PropTypes.func.isRequired,
+  selectItemWithFnHandler: PropTypes.func.isRequired,
+  sortByHandler: PropTypes.func.isRequired,
+  handleSearchChange: PropTypes.func.isRequired,
+};
 
 export default CritterPediaHeader;

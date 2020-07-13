@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class CritterPediaInput extends React.Component {
   constructor() {
@@ -7,11 +8,15 @@ class CritterPediaInput extends React.Component {
   }
 
   handleChange(event) {
-    this.props.handleSearchChange(event.target.value);
+    const { handleSearchChange } = this.props;
+    handleSearchChange(event.target.value);
   }
 
   render() {
     return (<input placeholder="enter name..." onChange={this.handleChange} />);
   }
 }
+CritterPediaInput.propTypes = {
+  handleSearchChange: PropTypes.func.isRequired,
+};
 export default CritterPediaInput;

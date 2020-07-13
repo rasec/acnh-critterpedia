@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -25,10 +26,11 @@ class SortSelector extends React.Component {
   }
 
   sortBy({ name, sortFn, keyToSort }) {
+    const { sortBy } = this.props;
     this.setState({
       sortType: name,
     });
-    this.props.sortBy(sortFn, keyToSort);
+    sortBy(sortFn, keyToSort);
   }
 
   renderSortItem({
@@ -40,8 +42,9 @@ class SortSelector extends React.Component {
   }
 
   render() {
+    const { sortType } = this.state;
     return (
-      <DropdownButton variant="outline-info" title={this.state.sortType}>
+      <DropdownButton variant="outline-info" title={sortType}>
         {(() => sortTypes.map(({
           id, name, keyToSort, sortFn,
         }) => this.renderSortItem({
@@ -51,5 +54,9 @@ class SortSelector extends React.Component {
     );
   }
 }
+
+SortSelector.propTypes = {
+  sortBy: PropTypes.func.isRequired,
+};
 
 export default SortSelector;
