@@ -78,6 +78,32 @@ class CritterPedia extends React.Component {
       && fish.monthsAvailable.includes(currentMonth)
     ));
   }
+  newThisMonth(fishesDataInput) {
+    const now = new Date();
+    const currentMonth = (now.getMonth() + 1);
+    const previousMonth = currentMonth - 1;
+    if (previousMonth === 0) {
+      previousMonth = 12;
+    }
+    return fishesDataInput.filter((fish) => (
+      fish.monthsAvailable
+      && fish.monthsAvailable.includes(currentMonth)
+      && !fish.monthsAvailable.includes(previousMonth)
+    ));
+  }
+  leaveThisMonth(fishesDataInput) {
+    const now = new Date();
+    const currentMonth = (now.getMonth() + 1);
+    const nextMonth = currentMonth + 1;
+    if (nextMonth > 12) {
+      nextMonth = 0;
+    }
+    return fishesDataInput.filter((fish) => (
+      fish.monthsAvailable
+      && fish.monthsAvailable.includes(currentMonth)
+      && !fish.monthsAvailable.includes(nextMonth)
+    ));
+  }
   /* eslint-enable no-unused-vars */
 
   updateCritters(nextState) {
