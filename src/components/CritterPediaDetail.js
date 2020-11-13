@@ -177,23 +177,26 @@ CritterPediaDetail.propTypes = {
   critter: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    price: PropTypes.string,
-    location: PropTypes.string.isRequired,
-    hoursAvailable: PropTypes.string.isRequired,
-    monthsAvailable: PropTypes.string.isRequired,
-    shadowType: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    location: PropTypes.number.isRequired,
+    hoursAvailable: PropTypes.arrayOf(PropTypes.number).isRequired,
+    monthsAvailable: PropTypes.arrayOf(PropTypes.number).isRequired,
+    shadowType: PropTypes.number,
   }).isRequired,
   critterType: PropTypes.string.isRequired,
-  showModal: PropTypes.func.isRequired,
+  showModal: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.func,
+  ]).isRequired,
   hideModal: PropTypes.func.isRequired,
 };
 
 ActiveHoursBar.propTypes = {
-  hours: PropTypes.string.isRequired,
+  hours: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 Calendar.propTypes = {
-  months: PropTypes.string.isRequired,
+  months: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default CritterPediaDetail;

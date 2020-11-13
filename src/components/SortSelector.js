@@ -5,11 +5,13 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 const sortTypes = [
   {
+    id: 'id',
     name: 'id',
     keyToSort: 'id',
     sortFn: (a, b, keyToSort) => (a[keyToSort] - b[keyToSort]),
   },
   {
+    id: 'price',
     name: 'Price',
     keyToSort: 'price',
     sortFn: (a, b, keyToSort) => (b[keyToSort] - a[keyToSort]),

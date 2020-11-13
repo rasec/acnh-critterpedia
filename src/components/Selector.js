@@ -37,11 +37,14 @@ class Selector extends React.Component {
     );
   }
 }
+Selector.defaultProps = {
+  selectItemHandler: undefined,
+};
 
 Selector.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number.isRequired, name: PropTypes.string.isRequired })).isRequired,
   filterName: PropTypes.string.isRequired,
-  selectItemHandler: PropTypes.func.isRequired,
+  selectItemHandler: PropTypes.func,
 };
 
 export default Selector;

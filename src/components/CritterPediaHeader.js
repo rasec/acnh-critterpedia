@@ -46,10 +46,13 @@ function CritterPediaHeader(props) {
     </div>
   );
 }
+CritterPediaHeader.defaultProps = {
+  selectShadowTypeHandler: undefined,
+};
 
 CritterPediaHeader.propTypes = {
   critterType: PropTypes.string.isRequired,
-  selectShadowTypeHandler: PropTypes.func.isRequired,
+  selectShadowTypeHandler: PropTypes.func,
   selectLocationHandler: PropTypes.func.isRequired,
   selectItemWithFnHandler: PropTypes.func.isRequired,
   sortByHandler: PropTypes.func.isRequired,

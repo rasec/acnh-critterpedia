@@ -78,10 +78,11 @@ class CritterPedia extends React.Component {
       && fish.monthsAvailable.includes(currentMonth)
     ));
   }
+
   newThisMonth(fishesDataInput) {
     const now = new Date();
     const currentMonth = (now.getMonth() + 1);
-    const previousMonth = currentMonth - 1;
+    let previousMonth = currentMonth - 1;
     if (previousMonth === 0) {
       previousMonth = 12;
     }
@@ -91,10 +92,11 @@ class CritterPedia extends React.Component {
       && !fish.monthsAvailable.includes(previousMonth)
     ));
   }
+
   leaveThisMonth(fishesDataInput) {
     const now = new Date();
     const currentMonth = (now.getMonth() + 1);
-    const nextMonth = currentMonth + 1;
+    let nextMonth = currentMonth + 1;
     if (nextMonth > 12) {
       nextMonth = 0;
     }
