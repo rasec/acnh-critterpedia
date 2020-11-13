@@ -8,5 +8,5 @@ import CritterPedia from './components/CritterPedia';
 
 ReactDOM.render(
   <CritterPedia />,
-  document.getElementsByTagName('body')[0],
+  document.getElementById('root'),
 );
