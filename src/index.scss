@@ -1,0 +1,25 @@
+@import '~bootstrap/scss/bootstrap.scss';
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+@font-face {
+    font-family: 'SourceSans';
+    src: local('SourceSans'), url(./fonts/SourceSansPro-Regular.ttf) format('truetype');
+}
+body {
+    margin: 0;
+    font-family: 'SourceSans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #4c3c33;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
